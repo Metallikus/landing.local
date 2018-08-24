@@ -16,24 +16,9 @@ Route::get('/', ['as'=>'Home',function () {
     #echo "АЗАЗАЗАЗА";
 }]);
 
-Route::get('/article/{id}', ['as'=>'Article',function ($id) {
-    echo $id;
-}]);
+Route::get('/about/{id}', 'FirstController@show');
+Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
+Route::get('/article/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
 
-Route::get('page/{cat}/{id}', function ($cat, $id) {
-    #return view('page');
-    echo '<pre>';
-    echo $cat . ' | ' . $id;
-    echo '</pre>';
-})/*->where(['cat'=>'[A-Za-z]+',
-    'id'=>'[0-9]+'])*/;
-
-Route::group(['prefix' => 'admin'], function (){
-    Route::get('page/create', function (){
-        echo '<a href="'.route('Article', [25]).'">На главную</a>';
-    });
-    
-    Route::get('page/edit', function (){
-        echo 'edit';
-    });
-});
+//list pages
+Route::controller('/pages', 'PagesController');
