@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', ['as'=>'Home',function () {
-    return view('welcome');
-    #echo "АЗАЗАЗАЗА";
-}]);
+Route::get('/', ['as'=>'home', 'uses'=>'Admin\IndexController@show']);
 
 Route::get('/about/{id}', 'FirstController@show');
 Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
-Route::get('/article/{id}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article']);
-
-//list pages
-Route::controller('/pages', 'PagesController');
+Route::get('/article/{page}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article', 'middleware'=>'mymiddle:admin']);

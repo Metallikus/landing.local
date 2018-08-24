@@ -7,12 +7,16 @@ use App\Http\Controllers\Controller;
 
 class Core extends Controller
 {
+    public function __construct() {
+        
+    }
+
     //
     public function getArticles() {
         echo "getArticles";
     }
     
-    public function getArticle($id) {
-        echo $id;
+    public function getArticle($page) {
+        echo $page;
     }
 }
