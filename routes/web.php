@@ -11,28 +11,29 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as'=>'Home',function () {
     return view('welcome');
     #echo "АЗАЗАЗАЗА";
-});
+}]);
 
-Route::get('page', function () {
-    return view('page');
-});
+Route::get('/article/{id}', ['as'=>'Article',function ($id) {
+    echo $id;
+}]);
 
-Route::get('azaza', function () {
+Route::get('page/{cat}/{id}', function ($cat, $id) {
+    #return view('page');
     echo '<pre>';
-    //print_r($_ENV);
-    echo Config::set('app.locale', 'ru');
-    echo Config::get('app.locale');
+    echo $cat . ' | ' . $id;
     echo '</pre>';
+})/*->where(['cat'=>'[A-Za-z]+',
+    'id'=>'[0-9]+'])*/;
+
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('page/create', function (){
+        echo '<a href="'.route('Article', [25]).'">На главную</a>';
+    });
+    
+    Route::get('page/edit', function (){
+        echo 'edit';
+    });
 });
-
-
-//Route::post('azaza', function () {
-//    echo '<pre>';
-//    //print_r($_ENV);
-//    echo Config::set('app.locale', 'ru');
-//    echo Config::get('app.locale');
-//    echo '</pre>';
-//});
