@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class AboutController extends Controller
 {
     //
     public function show() {
         //$data = array('title'=>'МЕГАЛЭНДИНГ!!!!');
         $view = View('template');
-        $view->with('title','МЕГАЛЭНДИНГ!!!!');
+        $view->with('title','О ЛЭДИНГЕ!!!!');
         return $view;
     }
 }
