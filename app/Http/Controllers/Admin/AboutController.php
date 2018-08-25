@@ -10,7 +10,7 @@ class AboutController extends Controller
     //
     public function show() {
         //$data = array('title'=>'МЕГАЛЭНДИНГ!!!!');
-        $view = View('template');
+        $view = View('about');
         $view->with('title','О ЛЭДИНГЕ!!!!');
         return $view;
     }
