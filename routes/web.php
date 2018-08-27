@@ -15,4 +15,5 @@ Route::get('/', ['as'=>'home', 'uses'=>'Admin\IndexController@show']);
 
 Route::get('/about', ['as'=>'about', 'uses'=>'Admin\AboutController@show']);
 Route::get('/articles', ['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
+Route::match(['get','post'],'/contact', ['uses'=>'Admin\ContactController@show', 'as'=>'contact']);
 Route::get('/article/{page}', ['uses'=>'Admin\Core@getArticle', 'as'=>'article', 'middleware'=>'mymiddle:admin']);
